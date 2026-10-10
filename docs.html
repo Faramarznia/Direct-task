@@ -101,9 +101,9 @@
     .callout b{color:var(--blue-700)}
     .result{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 12px;border-radius:12px;background:#FCFCFD;border:1px solid var(--line);margin-top:8px;font-size:14px}
     .result .arrow{transform:none}
-    .total-time{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:14px 0 4px;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,#1F56D8,#3B7BF6 60%,#6EA0FA);color:#fff;box-shadow:0 10px 22px -12px rgba(37,99,235,.65)}
-    .total-time span{font-size:13px;font-weight:700;opacity:.85}
-    .total-time b{font-family:var(--display);font-weight:800;font-size:20px;line-height:1.5}
+    .total-time{margin:10px 0 2px;padding:8px 12px;border-radius:10px;background:#F7F8FA;border:1px solid var(--line);font-size:14px;color:var(--ink-700)}
+    .total-time span{color:var(--muted);margin-left:6px}
+    .total-time b{font-weight:700;color:var(--ink)}
     footer{margin-top:32px;color:var(--subtle);font-size:12.5px;text-align:center}
 
     @media print{
@@ -164,8 +164,7 @@
       #simple{break-inside:avoid}
       h2{break-after:avoid}
       #ai,#run{font-size:9pt}
-      .total-time{padding:8px 12px;border-radius:10px;margin:8px 0 2px}
-      .total-time b{font-size:13pt}
+      .total-time{padding:4px 8px;border-radius:6px;margin:6px 0 2px;font-size:9pt}
       footer{display:none}
     }
   </style>
@@ -307,7 +306,7 @@
   <section id="ai">
     <h2><span class="num">۰۷</span>گزارش زمان و هوش مصنوعی</h2>
     <p>این نمونه و این سند با <b>Claude Code</b> (هوش مصنوعی) ساخته شده‌اند؛ مسئله، سیستم طراحی direct.ir، فونت‌ها و معیار کیفیت از سوی من تعیین و خروجی‌ها بازبینی شد.</p>
-    <div class="total-time"><span>زمان کل</span><b>فقط در یک لیمیت Claude Code!</b></div>
+    <p class="total-time"><span>زمان کل:</span><b>فقط در یک لیمیت Claude Code!</b></p>
     <div class="tbl-scroll"><table>
       <thead><tr><th>بخش</th><th>نقش هوش مصنوعی</th><th>نحوه بررسی خروجی</th></tr></thead>
       <tbody>
