@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <meta name="theme-color" content="#F5F6F8">
+  <meta name="description" content="نمونه تعاملی افزودن و مدیریت دستگاه‌های ثبت شماره مشتری در پنل باشگاه مشتریان دایرکت">
+  <title>دایرکت · مدیریت دستگاه‌ها</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%232563EB'/%3E%3Crect x='10' y='6' width='12' height='20' rx='3' fill='none' stroke='white' stroke-width='2'/%3E%3Crect x='12.5' y='9' width='7' height='4' rx='1' fill='white'/%3E%3C/svg%3E">
+  <link rel="preload" href="assets/fonts/yekanbakh/YekanBakh-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/yekanbakh/YekanBakh-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/pinar/Pinar-FD-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+  <div class="stage">
+    <!-- نوار راهنمای نمونه (فقط موبایل) -->
+    <div class="proto-strip" role="region" aria-label="راهنمای نمونه">
+      <span class="proto-strip__label"><i></i><span id="strip-scn">نمونه تعاملی</span></span>
+      <button class="proto-strip__btn" data-action="demo-open" aria-haspopup="dialog">سناریوها و راهنما
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
+      </button>
+    </div>
+
+    <!-- پنل راهنمای نمونه (فقط دسکتاپ) -->
+    <aside class="demo-panel" aria-label="راهنمای نمونه تعاملی">
+      <div class="demo-panel__head">
+        <div class="demo-panel__brand"><span class="brand" style="font-size:20px">دایرکت</span><span class="chip chip--sm chip--blue">نمونه تعاملی</span></div>
+        <h1 class="demo-panel__title">افزودن و مدیریت دستگاه</h1>
+        <p class="demo-panel__sub">نمونه موبایل پنل باشگاه مشتریان. یک سناریو را انتخاب کنید و داخل گوشی کار کنید؛ داده‌ها ساختگی‌اند و در مرورگر شما ذخیره می‌شوند.</p>
+      </div>
+      <div class="demo-panel__body" id="demo-body"></div>
+    </aside>
+
+    <!-- اپلیکیشن -->
+    <div class="device-frame">
+      <main class="app" id="app">
+        <div class="screens" id="screens"></div>
+        <nav class="tabbar is-hidden" id="tabbar" aria-label="بخش‌های پنل"></nav>
+        <div class="toast-host" id="toast" aria-live="polite"></div>
+      </main>
+    </div>
+  </div>
+
+  <noscript><p style="padding:24px;font-family:Tahoma">برای اجرای این نمونه، جاوااسکریپت مرورگر را فعال کنید.</p></noscript>
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

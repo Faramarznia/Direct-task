@@ -1,0 +1,13 @@
+/* Yekan Bakh — عنوان‌ها و متن */
+@font-face{font-family:"YekanBakh";font-style:normal;font-weight:300;font-display:swap;src:url("../fonts/yekanbakh/YekanBakh-Light.woff2") format("woff2")}
+@font-face{font-family:"YekanBakh";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/yekanbakh/YekanBakh-Regular.woff2") format("woff2")}
+@font-face{font-family:"YekanBakh";font-style:normal;font-weight:600;font-display:swap;src:url("../fonts/yekanbakh/YekanBakh-SemiBold.woff2") format("woff2")}
+@font-face{font-family:"YekanBakh";font-style:normal;font-weight:700;font-display:swap;src:url("../fonts/yekanbakh/YekanBakh-Bold.woff2") format("woff2")}
+@font-face{font-family:"YekanBakh";font-style:normal;font-weight:800;font-display:swap;src:url("../fonts/yekanbakh/YekanBakh-ExtraBold.woff2") format("woff2")}
+@font-face{font-family:"YekanBakh";font-style:normal;font-weight:900;font-display:swap;src:url("../fonts/yekanbakh/YekanBakh-Black.woff2") format("woff2")}
+
+/* Pinar (نسخه FD با ارقام فارسی) — فونت نمایشی */
+@font-face{font-family:"Pinar";font-style:normal;font-weight:500;font-display:swap;src:url("../fonts/pinar/Pinar-FD-Medium.woff2") format("woff2")}
+@font-face{font-family:"Pinar";font-style:normal;font-weight:700;font-display:swap;src:url("../fonts/pinar/Pinar-FD-Bold.woff2") format("woff2")}
+@font-face{font-family:"Pinar";font-style:normal;font-weight:800;font-display:swap;src:url("../fonts/pinar/Pinar-FD-ExtraBold.woff2") format("woff2")}
+@font-face{font-family:"Pinar";font-style:normal;font-weight:900;font-display:swap;src:url("../fonts/pinar/Pinar-FD-Black.woff2") format("woff2")}

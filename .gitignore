@@ -1,0 +1,4 @@
+# Commercial font files (Yekan Bakh, Pinar) are kept out of the public repo.
+# Place the woff2 files under assets/fonts/ locally; see README.
+assets/fonts/
+.DS_Store

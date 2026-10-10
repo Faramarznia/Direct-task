@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F5F6F8">
+  <title>دایرکت · تصمیم‌های طراحی مدیریت دستگاه</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%232563EB'/%3E%3Crect x='10' y='6' width='12' height='20' rx='3' fill='none' stroke='white' stroke-width='2'/%3E%3Crect x='12.5' y='9' width='7' height='4' rx='1' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <style>
+    :root{
+      --blue:#2563EB;--blue-700:#1C4FD1;--blue-50:#F2F6FF;--blue-100:#E4EDFF;--blue-200:#C9DBFF;
+      --ink:#121826;--ink-700:#384055;--muted:#5D6579;--subtle:#8B92A3;--line:#E9ECF1;--line-strong:#DADEE6;
+      --bg:#F5F6F8;--surface:#fff;--orange:#EE6A1E;--orange-bg:#FFEEE1;--pink:#DF4479;--pink-bg:#FFE9F1;
+      --green:#15A063;--green-bg:#E3F6EC;--purple:#7356EE;--purple-bg:#EFEBFF;--yellow:#D29700;--yellow-bg:#FFF5D6;
+      --display:"Pinar","YekanBakh",system-ui,sans-serif;--body:"YekanBakh",Tahoma,system-ui,sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.95;-webkit-font-smoothing:antialiased}
+    a{color:var(--blue);text-underline-offset:4px}
+    h1,h2,h3,h4,p{margin:0}
+    .wrap{max-width:900px;margin:0 auto;padding:28px 20px 64px}
+    .top{display:flex;align-items:center;gap:12px;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap}
+    .brand{font-family:var(--display);font-weight:900;font-size:24px;color:var(--blue)}
+    .btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:12px;font-weight:700;font-size:14px;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+    .btn--primary{background:var(--blue);color:#fff;box-shadow:0 10px 22px -10px rgba(37,99,235,.65)}
+    .btn--ghost{background:var(--surface);color:var(--ink-700);border:1px solid var(--line-strong)}
+    .hero{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:28px;position:relative;overflow:hidden}
+    .hero::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;left:-160px;top:-220px;background:radial-gradient(closest-side,rgba(59,123,246,.16),transparent)}
+    .eyebrow{color:var(--muted);font-size:13px;font-weight:600}
+    h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,5vw,38px);line-height:1.45;margin:6px 0 10px;position:relative}
+    h1 span{background:linear-gradient(90deg,#2563EB,#5B95FA);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{color:var(--muted);max-width:680px;position:relative}
+    .tldr{display:grid;gap:10px;margin-top:20px;position:relative}
+    .tldr div{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:14px;background:var(--blue-50);font-size:14px;line-height:1.85}
+    .tldr b{color:var(--blue-700)}
+    .n{flex-shrink:0;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:var(--blue);color:#fff;font-family:var(--display);font-weight:800;font-size:14px}
+    nav.toc{display:flex;flex-wrap:wrap;gap:6px 16px;margin:22px 0 4px;font-size:13px}
+    nav.toc a{color:var(--muted);text-decoration:none;font-weight:600}
+    nav.toc a:hover{color:var(--blue)}
+    section{margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px}
+    .part{margin:40px 4px 4px;display:flex;align-items:center;gap:10px;color:var(--muted);font-weight:800;font-size:13px}
+    .part::after{content:"";flex:1;height:1px;background:var(--line-strong)}
+    h2{font-family:var(--display);font-weight:800;font-size:22px;line-height:1.5;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+    h2 .num{font-family:var(--display);font-size:13px;color:var(--blue);background:var(--blue-50);border-radius:8px;padding:2px 8px}
+    h3{font-size:16px;font-weight:800;margin:18px 0 6px}
+    p + p{margin-top:8px}
+    .muted{color:var(--muted)}
+    ul,ol{margin:8px 0;padding-right:20px}
+    li{margin:3px 0}
+    li::marker{color:var(--blue)}
+    .grid2{display:grid;gap:12px}
+    @media(min-width:720px){.grid2{grid-template-columns:1fr 1fr}.g-data{grid-template-columns:2fr 3fr}}
+    .card{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#FCFCFD}
+    .card h4{font-size:14.5px;font-weight:800;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+    .card p,.card li{font-size:14px;color:var(--ink-700)}
+    .tag{display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 9px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap;vertical-align:1px}
+    .t-blue{background:var(--blue-50);color:var(--blue-700)}.t-purple{background:var(--purple-bg);color:var(--purple)}
+    .t-orange{background:var(--orange-bg);color:var(--orange)}.t-pink{background:var(--pink-bg);color:var(--pink)}
+    .t-gray{background:#F0F2F5;color:var(--muted)}.t-green{background:var(--green-bg);color:var(--green)}
+    .t-yellow{background:var(--yellow-bg);color:#8A6400}
+    table{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px;margin-top:10px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+    th,td{text-align:right;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.8}
+    th{background:#F7F8FA;font-weight:800;color:var(--ink-700);font-size:12.5px}
+    tr:last-child td{border-bottom:0}
+    .tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .tbl-scroll table{min-width:560px}
+    .phone{direction:ltr;unicode-bidi:isolate;font-weight:700}
+
+    /* structure diagram */
+    .chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin-top:14px}
+    .node{flex:1 1 0;min-width:0;border-radius:14px;padding:12px;background:#fff;border:1.5px solid var(--line-strong);position:relative}
+    .node b{display:block;font-size:14.5px}
+    .node small{display:block;color:var(--muted);font-size:12px;line-height:1.7;margin-top:2px}
+    .node.hidden{border-style:dashed}
+    .node.key{border-color:var(--blue);background:var(--blue-50)}
+    .arrow{display:flex;align-items:center;color:var(--blue);font-weight:800}
+    @media(max-width:720px){.chain{flex-direction:column}.arrow{justify-content:center;transform:rotate(-90deg);height:16px}}
+
+    /* journey */
+    .journey{position:relative;margin-top:14px}
+    .jstep{display:grid;grid-template-columns:40px 1fr;gap:12px;position:relative;padding-bottom:16px}
+    .jstep:not(:last-child)::before{content:"";position:absolute;right:19px;top:40px;bottom:0;border-right:2px dashed var(--blue-200)}
+    .jdot{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:16px;background:var(--blue-50);color:var(--blue-700);position:relative;z-index:1}
+    .jbody{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:#fff}
+    .jbody h4{font-size:15px;font-weight:800}
+    .jmeta{display:grid;gap:4px;margin-top:6px;font-size:13px;color:var(--ink-700)}
+    @media(min-width:720px){.jmeta{grid-template-columns:repeat(3,1fr);gap:10px}}
+    .jmeta span b{display:block;font-size:11.5px;color:var(--subtle);font-weight:800}
+    .branch-alt{margin-top:8px;font-size:12.5px;color:#7A2B2B;background:#FDEDED;border-radius:10px;padding:6px 10px}
+
+    ul.compact{margin:10px 0 0}
+    ul.compact li{font-size:14px;line-height:1.85}
+    .whys{margin-top:12px}
+    .whys p{margin:0;font-size:13.5px;line-height:1.85;color:var(--ink-700);padding:10px 12px;border-radius:12px;background:#FCFCFD;border:1px solid var(--line)}
+    .whys p b{color:var(--ink)}
+    .note{margin-top:10px;font-size:13.5px;color:var(--ink-700);background:var(--blue-50);border-radius:12px;padding:10px 12px;line-height:1.85}
+    .callout{border-radius:14px;padding:12px 14px;background:var(--blue-50);font-size:14px;margin-top:12px}
+    .callout.warn{background:#FFF7E6}
+    .callout b{color:var(--blue-700)}
+    .result{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 12px;border-radius:12px;background:#FCFCFD;border:1px solid var(--line);margin-top:8px;font-size:14px}
+    .result .arrow{transform:none}
+    .placeholder{background:#FFF3C4;border:1px dashed #E0B400;border-radius:8px;padding:0 6px;font-weight:700;color:#6B5200}
+    footer{margin-top:32px;color:var(--subtle);font-size:12.5px;text-align:center}
+
+    @media print{
+      @page{size:A4;margin:9mm 10mm}
+      body{background:#fff;font-size:8.6pt;line-height:1.55;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      .wrap{max-width:none;padding:0}
+      .top{display:none}
+      nav.toc{display:none}
+      .hero{border:0;padding:0;border-radius:0}
+      .hero::before{display:none}
+      h1{font-size:17pt;margin:0 0 2px;line-height:1.35}
+      .eyebrow{font-size:7.5pt}
+      .lead{font-size:8.4pt}
+      .tldr{grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:6px}
+      .tldr div{padding:6px 8px;font-size:7.8pt;line-height:1.55;gap:6px;border-radius:8px}
+      .n{width:18px;height:18px;font-size:8pt;border-radius:6px}
+      section{border:0;padding:0;margin-top:7px;border-radius:0;background:none}
+      .part{margin:8px 0 2px;font-size:7.5pt;break-before:page}
+      .part.first{break-before:auto}
+      h2{font-size:11pt;margin-bottom:3px;line-height:1.35}
+      h2 .num{font-size:7.5pt;padding:0 5px}
+      h3{font-size:9pt;margin:6px 0 2px}
+      .grid2{grid-template-columns:1fr 1fr;gap:6px}
+      .g-data{grid-template-columns:2fr 3fr}
+      .card{padding:6px 9px;border-radius:8px}
+      .card h4{font-size:8.6pt;margin-bottom:0}
+      .card p,.card li{font-size:8pt;line-height:1.55}
+      ul,ol{margin:3px 0;padding-right:14px}
+      li{margin:1px 0}
+      ul.compact{margin-top:4px}
+      ul.compact li{font-size:8pt;line-height:1.55}
+      .whys{margin-top:6px}
+      .whys p{font-size:7.8pt;line-height:1.55;padding:5px 8px;border-radius:8px}
+      .note{font-size:7.9pt;line-height:1.55;padding:5px 8px;margin-top:5px;border-radius:8px}
+      .chain{flex-direction:row;gap:4px;margin-top:4px}
+      .node{padding:5px 7px;border-radius:8px}
+      .node b{font-size:8.4pt}
+      .node small{font-size:7pt;line-height:1.45}
+      .arrow{transform:none;height:auto}
+      .tag{height:16px;font-size:7pt;padding:0 5px}
+      .journey{margin-top:4px;display:grid;grid-template-columns:1fr 1fr;gap:5px 8px}
+      .jstep{grid-template-columns:20px 1fr;gap:5px;padding-bottom:0}
+      .jstep::before{display:none}
+      .jdot{width:20px;height:20px;font-size:8pt;border-radius:6px}
+      .jbody{padding:5px 8px;border-radius:8px}
+      .jbody h4{font-size:8.6pt}
+      .jmeta{grid-template-columns:1fr;gap:1px;margin-top:2px;font-size:7.6pt;line-height:1.5}
+      .jmeta span b{display:inline;font-size:7.2pt;margin-left:4px}
+      .branch-alt{font-size:7.3pt;padding:3px 6px;margin-top:3px;line-height:1.5;border-radius:6px}
+      table{font-size:7.8pt;margin-top:4px;border-radius:8px}
+      th,td{padding:3px 7px;line-height:1.5}
+      th{font-size:7.6pt}
+      .tbl-scroll{overflow:visible}
+      .tbl-scroll table{min-width:0}
+      .result{padding:4px 8px;margin-top:4px;font-size:8pt;border-radius:8px}
+      .callout{padding:6px 9px;font-size:8pt;margin-top:6px;border-radius:8px}
+      .jstep,.card,table,.callout,.node,.result,.note{break-inside:avoid}
+      #simple{break-inside:avoid}
+      h2{break-after:avoid}
+      #validate,#ai,#run{font-size:9pt}
+      footer{display:none}
+    }
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <div class="top">
+    <span class="brand">دایرکت</span>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <a class="btn btn--primary" href="index.html">باز کردن نمونه تعاملی</a>
+      <button class="btn btn--ghost" onclick="window.print()">چاپ / PDF</button>
+    </div>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">تمرین طراحی محصول · باشگاه مشتریان</p>
+    <h1>افزودن و مدیریت دستگاه، با هدف <span>انتخاب درست مخاطبان</span></h1>
+    <p class="lead">تصمیم‌های پشت نمونه تعاملی: ساختار اطلاعات، مسیر کار مدیر، منطق انتخاب مخاطب با داده ساختگی و اثر تغییر اطلاعات دستگاه.</p>
+    <div class="tldr">
+      <div><span class="n">۱</span><span><b>دستگاه = محل ثبت مشتری.</b> هر ثبت، شعبه و بخشِ دستگاه را همان لحظه ذخیره می‌کند و مشتری خودکار برچسب «شعبه …» و «بخش …» می‌گیرد؛ صفحه انتخاب مخاطب فعلی بی‌تغییر از آن‌ها استفاده می‌کند.</span></div>
+      <div><span class="n">۲</span><span><b>پیچیدگی فقط وقتی لازم است.</b> کاربر تک‌دستگاه فقط یک کد وارد می‌کند؛ «شعبه» با شعبه دوم و «بخش» با دستگاه دوم در یک شعبه ظاهر می‌شود.</span></div>
+      <div><span class="n">۳</span><span><b>هویت ثابت، برچسب قابل تغییر.</b> تغییر نام بی‌اثر است؛ تغییر شعبه/بخش می‌پرسد «جابه‌جا کرده‌اید یا اشتباه بوده؟» و اثرش را پیش از ذخیره با عدد نشان می‌دهد.</span></div>
+    </div>
+    <nav class="toc" aria-label="فهرست">
+      <a href="#need">نیاز و فرض‌ها</a><a href="#structure">ساختار</a><a href="#journey">مسیر کاربر</a><a href="#simple">سادگی</a>
+      <a href="#audience">مثال انتخاب مخاطب</a><a href="#change">اثر تغییر</a><a href="#validate">روش بررسی</a><a href="#ai">گزارش AI</a><a href="#run">اجرا</a>
+    </nav>
+  </header>
+
+  <p class="part first">بخش اول · مسیر کار کاربر و تصمیم‌های طراحی (دو صفحه)</p>
+
+  <section id="need">
+    <h2><span class="num">۰۱</span>برداشت از نیاز مدیر و فرض‌ها</h2>
+    <div class="grid2">
+      <div class="card"><h4><span class="tag t-blue">شعبه</span>«کجا مشتری من شد؟»</h4><p>تعطیلی یا بازسازی شعبه، ساعت کاری، افتتاحیه، رویداد محلی. پیام به مشتریان شعبه دیگر نامربوط و هزینه پیامک است.</p></div>
+      <div class="card"><h4><span class="tag t-orange">بخش</span>«به چه چیزی علاقه دارد؟»</h4><p>وقتی دستگاه‌های یک شعبه در قسمت‌های مختلف‌اند (قنادی/کافه، بانوان/آقایان)، محل ثبت نشانه علاقه است؛ مثلاً «کیک یلدا» فقط برای مشتریان قنادی، در همه شعبه‌ها.</p></div>
+    </div>
+    <ul class="compact">
+      <li><b>فرض:</b> هر دستگاه کد ۸ رقمی و QR روی برچسب پشت و جعبه دارد و پس از اتصال به اینترنت «آنلاین» می‌شود؛ دستگاه آفلاین شماره‌ها را نگه می‌دارد.</li>
+      <li><b>فرض:</b> انتخاب مخاطب فعلی «انتخاب یک برچسب» است؛ ترکیب برچسب‌ها (ونک <i>و</i> کافه) خارج از دامنه است، هرچند داده آن را پشتیبانی می‌کند.</li>
+      <li><b>فرض:</b> چند دستگاه در یک شعبه یا برای <b>قسمت‌های مختلف</b> است یا فقط برای <b>شلوغی</b>؛ پس «بخش» اختیاری است.</li>
+      <li><b>نیاز به داده برای تأیید:</b> سهم این دو حالت در کسب‌وکارهای چنددستگاهه، و روش واقعی شناسایی دستگاه (کد چاپی، QR یا سریال) و نرخ خطای ورود آن.</li>
+    </ul>
+  </section>
+
+  <section id="structure">
+    <h2><span class="num">۰۲</span>ساختار پیشنهادی و دلیل انتخاب</h2>
+    <div class="chain" role="img" aria-label="کسب‌وکار، شعبه، دستگاه، ثبت شماره، برچسب خودکار، انتخاب مخاطب">
+      <div class="node"><b>کسب‌وکار</b><small>حساب مدیر</small></div><div class="arrow">←</div>
+      <div class="node hidden"><b>شعبه</b><small>همیشه در داده؛ در رابط از شعبه دوم</small></div><div class="arrow">←</div>
+      <div class="node"><b>دستگاه</b><small>کد ثابت، نام، شعبه، بخش اختیاری</small></div><div class="arrow">←</div>
+      <div class="node key"><b>ثبت شماره</b><small>شعبه و بخش همان لحظه ذخیره می‌شود</small></div><div class="arrow">←</div>
+      <div class="node"><b>برچسب خودکار</b><small><span class="tag t-blue">شعبه ونک</span> <span class="tag t-orange">بخش قنادی</span></small></div><div class="arrow">←</div>
+      <div class="node"><b>انتخاب مخاطب</b><small>صفحه فعلی، بدون تغییر</small></div>
+    </div>
+    <div class="grid2 whys">
+      <p><b>بخش، ویژگی دستگاه است نه سطح سوم:</b> بین شعبه‌ها مشترک است («قنادی» در ونک و تجریش) و برای بیشتر کاربران لازم نیست؛ نه مرحله اضافه می‌کند نه فهرست تودرتو.</p>
+      <p><b>برچسب خودکار، نه فیلتر جدید:</b> برچسب همین حالا ابزار انتخاب مخاطب است؛ مدیر چیز تازه‌ای یاد نمی‌گیرد و جریان ارسال پیام بازطراحی نمی‌شود. برچسب‌های خودکار (⚡) دستی حذف نمی‌شوند.</p>
+      <p><b>شعبه همیشه در داده:</b> با ساخت شعبه دوم فقط شعبه فعلی نام می‌گیرد و همه مشتریان قبلی بی‌درنگ عضو گروه آن می‌شوند؛ رشد بدون مهاجرت داده.</p>
+      <p><b>ثبت، محل را ذخیره می‌کند:</b> محل ثبت واقعیت تاریخی است. اگر گروه از ویژگی <i>فعلی</i> دستگاه خوانده شود، جابه‌جا کردن یک دستگاه بی‌صدا صدها مشتری را جابه‌جا می‌کند.</p>
+    </div>
+  </section>
+
+  <section id="journey">
+    <h2><span class="num">۰۳</span>مسیر کار کاربر</h2>
+    <div class="journey">
+      <div class="jstep"><span class="jdot">۱</span><div class="jbody"><h4>ورود</h4>
+        <div class="jmeta"><span><b>شروع</b>کارت «اتصال اولین دستگاه» در خانه یا تب «دستگاه‌ها»</span><span><b>تصمیم</b>شروع افزودن</span><span><b>بازخورد</b>وضعیت خالی آموزشی: سه قدم و یک دکمه</span></div></div></div>
+      <div class="jstep"><span class="jdot">۲</span><div class="jbody"><h4>کد دستگاه، تنها اطلاعات ضروری</h4>
+        <div class="jmeta"><span><b>اطلاعات</b>کد ۸ رقمی: تایپ، پیست یا اسکن QR</span><span><b>کمک</b>«کد کجاست؟» با تصویر؛ ارقام فارسی و انگلیسی</span><span><b>بازخورد</b>بررسی خودکار پس از رقم هشتم</span></div>
+        <p class="branch-alt">خطا، هرکدام با راه بعدی: کد پیدا نشد ← کد کجاست؟ · حساب دیگر ← پشتیبانی · تکراری ← مشاهده دستگاه · قطع ارتباط ← تلاش دوباره (کد حفظ می‌شود)</p></div></div>
+      <div class="jstep"><span class="jdot">۳</span><div class="jbody"><h4>مشخصات، همه با پیش‌فرض</h4>
+        <div class="jmeta"><span><b>اطلاعات</b>نام (پیشنهادی)؛ شعبه فقط در چندشعبه و ضروری؛ بخش اختیاری</span><span><b>تصمیم</b>نامی که جای دستگاه را نشان دهد؛ بخش لازم است؟</span><span><b>بازخورد</b>کارت زنده «این مشتریان چه برچسبی می‌گیرند»</span></div>
+        <p class="branch-alt">خطا: نام تکراری در همان شعبه · شعبه انتخاب نشده · بخش جدید بدون نام</p></div></div>
+      <div class="jstep"><span class="jdot">۴</span><div class="jbody"><h4>نتیجه</h4>
+        <div class="jmeta"><span><b>بازخورد ۱</b>«… اضافه شد» با خلاصه و برچسب‌ها</span><span><b>بازخورد ۲</b>«در انتظار اتصال» ← «آنلاین است»</span><span><b>پیشنهاد</b>دو دستگاه بی‌بخش در یک شعبه ← «تعیین بخش»</span></div></div></div>
+      <div class="jstep"><span class="jdot">۵</span><div class="jbody"><h4>مشاهده و تشخیص</h4>
+        <div class="jmeta"><span><b>کارت دستگاه</b>نام، بخش، ۴ رقم آخر شناسه (مطابق برچسب)، وضعیت، مشتریان</span><span><b>چندشعبه</b>دسته‌بندی زیر هر شعبه + کارت «گروه‌های مخاطب»</span><span><b>در محل</b>«پیدا کردن دستگاه»: صفحه دستگاه چشمک می‌زند</span></div></div></div>
+      <div class="jstep"><span class="jdot">۶</span><div class="jbody"><h4>ویرایش</h4>
+        <div class="jmeta"><span><b>نام</b>بدون اثر بر گروه‌ها (صریح در فرم)</span><span><b>شعبه / بخش</b>«جابه‌جایی یا اصلاح؟» + پیش‌نمایش عددی</span><span><b>بازخورد</b>پیام نتیجه، «بازگردانی»، ثبت در تاریخچه</span></div></div></div>
+    </div>
+  </section>
+
+  <section id="simple">
+    <h2><span class="num">۰۴</span>سادگی برای کسب‌وکار ساده</h2>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>ساختار</th><th>چه می‌بیند</th><th>چه نمی‌بیند</th><th>ورودی‌های افزودن</th></tr></thead>
+      <tbody>
+        <tr><td><b>یک شعبه، یک دستگاه</b> (بیشتر کاربران)</td><td>کد ← تأیید نام پیشنهادی ← تمام</td><td>شعبه، گروه‌ها؛ بخش بسته در «تنظیمات اختیاری»</td><td>فقط کد</td></tr>
+        <tr><td><b>یک شعبه، چند دستگاه</b></td><td>پیشنهاد نام، فیلد «بخش» باز، پیشنهاد تعیین بخش</td><td>شعبه</td><td>کد + نام (+ بخش)</td></tr>
+        <tr><td><b>چند شعبه</b></td><td>دسته‌بندی بر اساس شعبه، انتخاب شعبه، گروه‌های مخاطب</td><td>—</td><td>کد + شعبه + نام (+ بخش)</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">گذار به چندشعبه یک فرم دوفیلدی است («شعبه جدید» و «نام شعبه فعلی»)؛ دستگاه‌ها و مشتریان فعلی بی‌کم‌وکاست در شعبه فعلی می‌مانند.</p>
+  </section>
+
+  <section id="audience">
+    <h2><span class="num">۰۵</span>مثال داده‌ای: انتخاب گروه موردنظر مدیر</h2>
+    <p><b>کافه‌قنادی نارنج</b>، دو شعبه. نیاز فرضی: (الف) شعبه ونک سه روز برای بازسازی تعطیل است؛ (ب) کیک یلدا فقط در قنادی‌ها فروخته می‌شود.</p>
+    <div class="grid2 g-data">
+      <div class="tbl-scroll"><table><thead><tr><th>دستگاه</th><th>شعبه</th><th>بخش</th></tr></thead><tbody>
+        <tr><td>صندوق قنادی</td><td>ونک</td><td>قنادی</td></tr>
+        <tr><td>صندوق کافه</td><td>ونک</td><td>کافه</td></tr>
+        <tr><td>پیشخوان</td><td>تجریش</td><td>قنادی</td></tr>
+      </tbody></table></div>
+      <div class="tbl-scroll"><table><thead><tr><th>مشتری</th><th>ثبت با</th><th>برچسب‌های خودکار</th></tr></thead><tbody>
+        <tr><td>م۱</td><td>صندوق قنادی</td><td><span class="tag t-blue">شعبه ونک</span> <span class="tag t-orange">بخش قنادی</span></td></tr>
+        <tr><td>م۲</td><td>صندوق کافه</td><td><span class="tag t-blue">شعبه ونک</span> <span class="tag t-pink">بخش کافه</span></td></tr>
+        <tr><td>م۳</td><td>قنادی + کافه</td><td><span class="tag t-blue">ونک</span> <span class="tag t-orange">قنادی</span> <span class="tag t-pink">کافه</span></td></tr>
+        <tr><td>م۴</td><td>پیشخوان</td><td><span class="tag t-purple">شعبه تجریش</span> <span class="tag t-orange">بخش قنادی</span></td></tr>
+        <tr><td>م۵</td><td>قنادی + پیشخوان</td><td><span class="tag t-blue">ونک</span> <span class="tag t-purple">تجریش</span> <span class="tag t-orange">قنادی</span></td></tr>
+      </tbody></table></div>
+    </div>
+    <div class="result"><b>(الف)</b> برچسب <span class="tag t-blue">شعبه ونک</span> <span class="arrow">←</span> م۱، م۲، م۳، م۵ <span class="muted">— م۴ که فقط مشتری تجریش است پیام نامربوط نمی‌گیرد.</span></div>
+    <div class="result"><b>(ب)</b> برچسب <span class="tag t-orange">بخش قنادی</span> <span class="arrow">←</span> م۱، م۳، م۴، م۵ <span class="muted">— از هر دو شعبه؛ م۲ که فقط از کافه خرید می‌کند حذف می‌شود.</span></div>
+    <p class="note">در نمونه (سناریو ۴) همین منطق روی ۳۲۴ مشتری اجرا می‌شود: شعبه ونک ۲۳۸، تجریش ۹۵، بخش قنادی ۲۳۶، کافه ۱۱۰؛ ۹ نفر در هر دو شعبه ثبت شده‌اند و عضو هر دو گروه‌اند.</p>
+  </section>
+
+  <section id="change">
+    <h2><span class="num">۰۶</span>تغییر اطلاعات دستگاه و اثر آن</h2>
+    <p>قاعده: <b>گروه به شناسه گره خورده، نه به نام</b>؛ و <b>محل ثبت هر مشتری واقعیت تاریخی است</b>، مگر مدیر بگوید اطلاعات قبلی اشتباه بوده.</p>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>تغییر</th><th>مشتریان قبلی</th><th>مشتریان جدید</th><th>دلیل</th></tr></thead>
+      <tbody>
+        <tr><td>نام دستگاه</td><td>بدون اثر</td><td>بدون اثر</td><td>نام فقط برچسب نمایشی است.</td></tr>
+        <tr><td>نام شعبه</td><td>همان گروه، نام جدید</td><td>همان گروه</td><td>همان موجودیت؛ برچسب همه‌جا به‌روز می‌شود.</td></tr>
+        <tr><td>شعبه/بخش: «جابه‌جا کرده‌ام» <span class="tag t-green">پیش‌فرض</span></td><td>در گروه قبلی می‌مانند</td><td>گروه جدید</td><td>واقعاً در محل قبلی ثبت شده‌اند.</td></tr>
+        <tr><td>شعبه/بخش: «اشتباه بوده»</td><td>به گروه جدید منتقل می‌شوند</td><td>گروه جدید</td><td>داده قبلی نادرست بوده است.</td></tr>
+        <tr><td>تعیین بخش برای اولین بار</td><td>پیش‌فرض: اضافه می‌شوند</td><td>به بخش</td><td>محتمل‌ترین حالت: دستگاه از اول همان‌جا بوده.</td></tr>
+        <tr><td>حذف دستگاه</td><td>برچسب‌ها می‌مانند</td><td>—</td><td>مشتریان و تاریخچه حفظ؛ «بازگردانی» در دسترس.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note"><b>نمونه عددی (سناریو ۵):</b> «صندوق کافه» با ۱۱۰ مشتری از ونک به تجریش می‌رود. <span class="tag t-green">جابه‌جایی</span> ونک ۲۳۸ و تجریش ۹۵ بی‌تغییر می‌مانند و فقط مشتریان جدید به تجریش می‌روند. <span class="tag t-yellow">اصلاح</span> ونک ۲۳۸ ← ۱۵۰ و تجریش ۹۵ ← ۲۰۵؛ ۲۲ نفری که در صندوق قنادی ونک هم ثبت شده‌اند در ونک می‌مانند. این اعداد پیش از ذخیره در برگه ویرایش نمایش داده می‌شوند.</p>
+    <p class="note"><b>محدودیت‌های نمونه:</b> مدیریت مستقل بخش‌ها (تغییر نام/ادغام)، حذف شعبه دارای مشتری و ترکیب برچسب‌ها پیاده نشده‌اند؛ اسکن QR و اتصال دستگاه شبیه‌سازی شده‌اند.</p>
+  </section>
+
+  <p class="part">بخش دوم · روش بررسی راه‌حل</p>
+
+  <section id="validate">
+    <h2><span class="num">۰۸</span>روش بررسی</h2>
+    <h3>۱. آیا دسته‌بندی با نیاز واقعی مدیر جور است؟ (قبل از ساخت)</h3>
+    <p>با ۸ تا ۱۰ مدیر (۴ تک‌دستگاه، ۳ چنددستگاه در یک شعبه، ۳ چندشعبه) مصاحبه کوتاه: «۵ پیام آخری که فرستادید برای چه کسانی بود؟» و در داده واقعی پنل: برچسب‌های دستی پرکاربرد چه معیاری دارند؟</p>
+    <p class="callout warn"><b>نشانه بازنگری:</b> اگر بیش از ۳۰٪ نیازهای هدف‌گیری ربطی به محل ثبت نداشته باشد (مثلاً مبلغ خرید یا دفعات مراجعه)، شعبه/بخش معیار اصلی نیست و باید کنار معیار رفتاری طراحی شود.</p>
+    <h3>۲. آیا مدیر جریان‌ها را درست انجام می‌دهد؟ (تست کاربردپذیری روی گوشی خودشان)</h3>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>وظیفه</th><th>معیار موفقیت</th><th>نشانه بازنگری</th></tr></thead>
+      <tbody>
+        <tr><td>اولین دستگاه را اضافه کنید.</td><td>بدون کمک، کمتر از ۶۰ ثانیه</td><td>مکث بیش از ۱۰ ثانیه روی مرحله مشخصات یا باز کردن «تنظیمات اختیاری» توسط بیش از نیمی از کاربران تک‌دستگاه ← افزودن مستقیم پس از کد</td></tr>
+        <tr><td>دستگاه دوم را طوری اضافه کنید که بعداً از اولی تشخیصش دهید.</td><td>نام معنادار؛ تشخیص درست دو دستگاه در محل</td><td>بیش از ۲۰٪ «کافه» را در نام می‌نویسند ولی بخش تعیین نمی‌کنند ← مفهوم نام و بخش باید ادغام یا بازنام‌گذاری شود</td></tr>
+        <tr><td>(چندشعبه) به شعبه تجریش دستگاه اضافه کنید.</td><td>شعبه درست در اولین تلاش</td><td>انتخاب شعبه اشتباه ← پیش‌فرض بر اساس شعبه درحال‌مشاهده کافی نیست</td></tr>
+        <tr><td>«فقط به مشتریان ونک پیام بدهید؛ کدام گروه؟»</td><td>انتخاب «شعبه ونک» و توضیح درست اعضا</td><td>ابهام درباره مشتری مشترک دو شعبه</td></tr>
+        <tr><td>«دیروز دستگاه کافه را به تجریش بردید؛ پنل را به‌روز کنید.» و سپس: «مشتریان قبلی آن الان کجا هستند؟»</td><td>انتخاب «جابه‌جایی» و پاسخ درست</td><td>کمتر از ۷۰٪ گزینه منطبق با سناریو را انتخاب کنند ← بازنویسی متن یا تغییر پیش‌فرض</td></tr>
+      </tbody>
+    </table></div>
+    <h3>۳. پس از انتشار (داده محصول)</h3>
+    <ul>
+      <li>زمان از شروع افزودن تا اولین «آنلاین»، و نرخ هر نوع خطای کد.</li>
+      <li>سهم پیام‌هایی که با برچسب خودکار ارسال می‌شوند؛ نرخ تعیین بخش در شعبه‌های دارای ۲+ دستگاه (زیر ۲۰٪ یعنی بخش نیاز واقعی نیست یا پیدا نمی‌شود).</li>
+      <li>نرخ استفاده از «بازگردانی» پس از تغییر شعبه/بخش (بالا بودن آن یعنی پرسش «جابه‌جایی یا اصلاح» گیج‌کننده است).</li>
+    </ul>
+  </section>
+
+  <p class="part">بخش سوم · گزارش زمان و استفاده از هوش مصنوعی</p>
+
+  <section id="ai">
+    <h2><span class="num">۰۹</span>گزارش زمان و هوش مصنوعی</h2>
+    <p>این نمونه و این سند با <b>Claude Code</b> (هوش مصنوعی) ساخته شده‌اند؛ مسئله، سیستم طراحی direct.ir، فونت‌ها و معیار کیفیت از سوی من تعیین و خروجی‌ها بازبینی شد.</p>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>بخش</th><th>نقش هوش مصنوعی</th><th>نحوه بررسی خروجی</th><th>زمان واقعی</th></tr></thead>
+      <tbody>
+        <tr><td>تحلیل مسئله، ساختار اطلاعات و منطق برچسب خودکار</td><td>پیشنهاد گزینه‌ها و استدلال</td><td>تطبیق با سناریوهای ۱ تا ۵ و معیارهای تمرین</td><td><span class="placeholder">؟ دقیقه</span></td></tr>
+        <tr><td>سیستم طراحی (رنگ، تایپوگرافی پینار/یکان‌بخ، اجزا)</td><td>استخراج از تصویر direct.ir و پیاده‌سازی</td><td>مقایسه بصری با سایت</td><td><span class="placeholder">؟ دقیقه</span></td></tr>
+        <tr><td>کد نمونه (HTML/CSS/JS بدون وابستگی)</td><td>نوشتن کامل کد و داده ساختگی</td><td>اجرای خودکار همه سناریوها با Playwright در عرض‌های ۳۶۰، ۳۹۰، ۴۳۰ و دسکتاپ، بررسی خطاهای کنسول و اسکرول افقی، بازبینی اسکرین‌شات هر صفحه</td><td><span class="placeholder">؟ دقیقه</span></td></tr>
+        <tr><td>متن‌های رابط و پیام‌های خطا</td><td>پیش‌نویس</td><td>خواندن در بستر هر صفحه؛ رفع ابهام‌هایی مثل جداکننده «·» که کنار ارقام فارسی شبیه «۰» دیده می‌شد</td><td><span class="placeholder">؟ دقیقه</span></td></tr>
+        <tr><td>این سند</td><td>پیش‌نویس</td><td>کنترل اعداد با خروجی نمونه</td><td><span class="placeholder">؟ دقیقه</span></td></tr>
+      </tbody>
+    </table></div>
+    <h3>کنار گذاشته‌شده برای رعایت زمان</h3>
+    <ul>
+      <li>اسکن QR واقعی با دوربین (شبیه‌سازی شد) و تست روی دستگاه فیزیکی.</li>
+      <li>مدیریت مستقل بخش‌ها، حذف شعبه دارای مشتری، ترکیب چند برچسب.</li>
+      <li>حالت تاریک، نسخه دسکتاپ پنل، نقش‌ها و دسترسی کاربران.</li>
+    </ul>
+  </section>
+
+  <section id="run">
+    <h2><span class="num">۱۰</span>راهنمای اجرا</h2>
+    <ol>
+      <li>فایل <code>index.html</code> را در مرورگر باز کنید (بدون نصب و اینترنت کار می‌کند)؛ یا پوشه را با یک سرور ساده مثل <code>npx serve .</code> اجرا کنید.</li>
+      <li>روی دسکتاپ، نمونه داخل قاب گوشی و پنل سناریوها کنار آن است. روی موبایل، از نوار بالای صفحه «سناریوها و راهنما» را بزنید.</li>
+      <li>هر سناریو داده خودش را بارگذاری می‌کند؛ «بازنشانی» داده سناریو فعلی را برمی‌گرداند. لینک مستقیم: <code>index.html?s=1</code> تا <code>?s=5</code>.</li>
+      <li>کدهای آزمایشی: <span class="phone">۱۱۱۱ ۱۱۱۱</span> کد اشتباه، <span class="phone">۲۲۲۲ ۲۲۲۲</span> حساب دیگر، <span class="phone">۳۳۳۳ ۳۳۳۳</span> قطع ارتباط (بار دوم موفق)، کد دستگاه موجود = تکراری، هر کد دیگر = موفق.</li>
+    </ol>
+  </section>
+
+  <footer>تمرین طراحی محصول · باشگاه مشتریان دایرکت · <a href="index.html">بازگشت به نمونه</a></footer>
+</main>
+</body>
+</html>
