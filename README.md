@@ -2,8 +2,9 @@
 
 نمونه تعاملی موبایل برای پنل باشگاه مشتریان دایرکت: افزودن دستگاه ثبت شماره مشتری، مدیریت دستگاه‌ها در یک یا چند شعبه، و ساختاری که انتخاب گروه مخاطب را هنگام ارسال پیام ممکن می‌کند.
 
-- **نمونه تعاملی:** `index.html`
-- **مستند تصمیم‌های طراحی، روش بررسی و گزارش AI:** `docs.html`
+- **نمونه آنلاین:** https://faramarznia.github.io/Direct-task/
+- **مستند تصمیم‌های طراحی، روش بررسی و گزارش AI:** https://faramarznia.github.io/Direct-task/docs.html
+- فایل‌ها: `index.html` (نمونه تعاملی) و `docs.html` (مستند)
 
 ## اجرا
 
@@ -22,11 +23,19 @@
 
 ### فونت‌ها
 
-فونت‌های یکان‌بخ و پینار تجاری‌اند و در مخزن عمومی قرار نگرفته‌اند. برای نمایش درست، فایل‌های woff2 را در این مسیرها بگذارید (بدون آن‌ها، فونت پیش‌فرض سیستم نمایش داده می‌شود):
+پینار برای عنوان‌های نمایشی (نسخه FD با ارقام فارسی) و یکان‌بخ برای عنوان‌ها و متن. فقط وزن‌های استفاده‌شده در `assets/fonts/` آمده‌اند:
 
 ```
 assets/fonts/yekanbakh/YekanBakh-{Light,Regular,SemiBold,Bold,ExtraBold,Black}.woff2
-assets/fonts/pinar/Pinar-FD-{Medium,Bold,ExtraBold,Black}.woff2   ← از پوشه Statics/woff2/FD
+assets/fonts/pinar/Pinar-FD-{Medium,Bold,ExtraBold,Black}.woff2
+```
+
+### انتشار روی GitHub Pages
+
+نسخه آنلاین از شاخه `gh-pages` منتشر می‌شود که همان محتوای شاخه کار است. برای به‌روزرسانی نسخه آنلاین پس از هر تغییر:
+
+```bash
+git push origin HEAD:gh-pages
 ```
 
 ## سناریوها
@@ -61,7 +70,8 @@ assets/css/app.css    توکن‌ها و اجزای سیستم طراحی (بر�
 assets/js/icons.js    آیکون‌ها و تصویرسازی‌های SVG
 assets/js/data.js     داده ساختگی سناریوها
 assets/js/app.js      وضعیت، مسیریابی، صفحه‌ها، برگه‌ها و جریان‌ها
-assets/fonts/         فایل‌های woff2 (خارج از git؛ بخش «فونت‌ها»)
+assets/fonts/         فایل‌های woff2 پینار و یکان‌بخ
+.nojekyll             انتشار مستقیم فایل‌ها روی GitHub Pages بدون پردازش Jekyll
 ```
 
 بدون فریم‌ورک و بدون وابستگی خارجی، تا روی هر میزبان استاتیک (مثل GitHub Pages) یا مستقیم از فایل اجرا شود.
