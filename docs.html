@@ -51,7 +51,7 @@
     li{margin:3px 0}
     li::marker{color:var(--blue)}
     .grid2{display:grid;gap:12px}
-    @media(min-width:720px){.grid2{grid-template-columns:1fr 1fr}.g-data{grid-template-columns:2fr 3fr}}
+    @media(min-width:720px){.grid2{grid-template-columns:1fr 1fr}.grid2.g-data{grid-template-columns:1fr}}
     .card{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#FCFCFD}
     .card h4{font-size:14.5px;font-weight:800;margin-bottom:4px;display:flex;align-items:center;gap:8px}
     .card p,.card li{font-size:14px;color:var(--ink-700)}
@@ -66,7 +66,20 @@
     tr:last-child td{border-bottom:0}
     .tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
     .tbl-scroll table{min-width:560px}
+    .g-data .tbl-scroll table{min-width:0}
+    .g-data table{margin-top:0}
+    .g-data td:first-child,.g-data th:first-child{white-space:nowrap}
     .phone{direction:ltr;unicode-bidi:isolate;font-weight:700}
+    @media screen and (max-width:640px){
+      .tbl-cards table{min-width:0}
+      .tbl-cards thead{display:none}
+      .tbl-cards table,.tbl-cards tbody,.tbl-cards tr,.tbl-cards td{display:block;width:100%}
+      .tbl-cards tr{padding:10px 12px;border-bottom:1px solid var(--line)}
+      .tbl-cards tr:last-child{border-bottom:0}
+      .tbl-cards td{border:0;padding:2px 0}
+      .tbl-cards td:first-child{font-weight:800;color:var(--ink);padding-bottom:4px}
+      .tbl-cards td:not(:first-child)::before{content:attr(data-label);display:block;font-size:11.5px;font-weight:800;color:var(--subtle);line-height:1.6}
+    }
 
     /* structure diagram */
     .chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin-top:14px}
@@ -250,12 +263,12 @@
 
   <section id="simple">
     <h2><span class="num">۰۴</span>سادگی برای کسب‌وکار ساده</h2>
-    <div class="tbl-scroll"><table>
+    <div class="tbl-scroll tbl-cards"><table>
       <thead><tr><th>ساختار</th><th>چه می‌بیند</th><th>چه نمی‌بیند</th><th>ورودی‌های افزودن</th></tr></thead>
       <tbody>
-        <tr><td><b>یک شعبه، یک دستگاه</b> (بیشتر کاربران)</td><td>کد ← تأیید نام پیشنهادی ← تمام</td><td>شعبه، گروه‌ها؛ بخش بسته در «تنظیمات اختیاری»</td><td>فقط کد</td></tr>
-        <tr><td><b>یک شعبه، چند دستگاه</b></td><td>پیشنهاد نام، فیلد «بخش» باز، پیشنهاد تعیین بخش</td><td>شعبه</td><td>کد + نام (+ بخش)</td></tr>
-        <tr><td><b>چند شعبه</b></td><td>دسته‌بندی بر اساس شعبه، انتخاب شعبه، گروه‌های مخاطب</td><td>—</td><td>کد + شعبه + نام (+ بخش)</td></tr>
+        <tr><td data-label="ساختار"><b>یک شعبه، یک دستگاه</b> (بیشتر کاربران)</td><td data-label="چه می‌بیند">کد ← تأیید نام پیشنهادی ← تمام</td><td data-label="چه نمی‌بیند">شعبه، گروه‌ها؛ بخش بسته در «تنظیمات اختیاری»</td><td data-label="ورودی‌های افزودن">فقط کد</td></tr>
+        <tr><td data-label="ساختار"><b>یک شعبه، چند دستگاه</b></td><td data-label="چه می‌بیند">پیشنهاد نام، فیلد «بخش» باز، پیشنهاد تعیین بخش</td><td data-label="چه نمی‌بیند">شعبه</td><td data-label="ورودی‌های افزودن">کد + نام (+ بخش)</td></tr>
+        <tr><td data-label="ساختار"><b>چند شعبه</b></td><td data-label="چه می‌بیند">دسته‌بندی بر اساس شعبه، انتخاب شعبه، گروه‌های مخاطب</td><td data-label="چه نمی‌بیند">—</td><td data-label="ورودی‌های افزودن">کد + شعبه + نام (+ بخش)</td></tr>
       </tbody>
     </table></div>
     <p class="note">گذار به چندشعبه یک فرم دوفیلدی است («شعبه جدید» و «نام شعبه فعلی»)؛ دستگاه‌ها و مشتریان فعلی بی‌کم‌وکاست در شعبه فعلی می‌مانند.</p>
@@ -286,15 +299,15 @@
   <section id="change">
     <h2><span class="num">۰۶</span>تغییر اطلاعات دستگاه و اثر آن</h2>
     <p>قاعده: <b>گروه به شناسه گره خورده، نه به نام</b>؛ و <b>محل ثبت هر مشتری واقعیت تاریخی است</b>، مگر مدیر بگوید اطلاعات قبلی اشتباه بوده.</p>
-    <div class="tbl-scroll"><table>
+    <div class="tbl-scroll tbl-cards"><table>
       <thead><tr><th>تغییر</th><th>مشتریان قبلی</th><th>مشتریان جدید</th><th>دلیل</th></tr></thead>
       <tbody>
-        <tr><td>نام دستگاه</td><td>بدون اثر</td><td>بدون اثر</td><td>نام فقط برچسب نمایشی است.</td></tr>
-        <tr><td>نام شعبه</td><td>همان گروه، نام جدید</td><td>همان گروه</td><td>همان موجودیت؛ برچسب همه‌جا به‌روز می‌شود.</td></tr>
-        <tr><td>شعبه/بخش: «جابه‌جا کرده‌ام» <span class="tag t-green">پیش‌فرض</span></td><td>در گروه قبلی می‌مانند</td><td>گروه جدید</td><td>واقعاً در محل قبلی ثبت شده‌اند.</td></tr>
-        <tr><td>شعبه/بخش: «اشتباه بوده»</td><td>به گروه جدید منتقل می‌شوند</td><td>گروه جدید</td><td>داده قبلی نادرست بوده است.</td></tr>
-        <tr><td>تعیین بخش برای اولین بار</td><td>پیش‌فرض: اضافه می‌شوند</td><td>به بخش</td><td>محتمل‌ترین حالت: دستگاه از اول همان‌جا بوده.</td></tr>
-        <tr><td>حذف دستگاه</td><td>برچسب‌ها می‌مانند</td><td>—</td><td>مشتریان و تاریخچه حفظ؛ «بازگردانی» در دسترس.</td></tr>
+        <tr><td data-label="تغییر">نام دستگاه</td><td data-label="مشتریان قبلی">بدون اثر</td><td data-label="مشتریان جدید">بدون اثر</td><td data-label="دلیل">نام فقط برچسب نمایشی است.</td></tr>
+        <tr><td data-label="تغییر">نام شعبه</td><td data-label="مشتریان قبلی">همان گروه، نام جدید</td><td data-label="مشتریان جدید">همان گروه</td><td data-label="دلیل">همان موجودیت؛ برچسب همه‌جا به‌روز می‌شود.</td></tr>
+        <tr><td data-label="تغییر">شعبه/بخش: «جابه‌جا کرده‌ام» <span class="tag t-green">پیش‌فرض</span></td><td data-label="مشتریان قبلی">در گروه قبلی می‌مانند</td><td data-label="مشتریان جدید">گروه جدید</td><td data-label="دلیل">واقعاً در محل قبلی ثبت شده‌اند.</td></tr>
+        <tr><td data-label="تغییر">شعبه/بخش: «اشتباه بوده»</td><td data-label="مشتریان قبلی">به گروه جدید منتقل می‌شوند</td><td data-label="مشتریان جدید">گروه جدید</td><td data-label="دلیل">داده قبلی نادرست بوده است.</td></tr>
+        <tr><td data-label="تغییر">تعیین بخش برای اولین بار</td><td data-label="مشتریان قبلی">پیش‌فرض: اضافه می‌شوند</td><td data-label="مشتریان جدید">به بخش</td><td data-label="دلیل">محتمل‌ترین حالت: دستگاه از اول همان‌جا بوده.</td></tr>
+        <tr><td data-label="تغییر">حذف دستگاه</td><td data-label="مشتریان قبلی">برچسب‌ها می‌مانند</td><td data-label="مشتریان جدید">—</td><td data-label="دلیل">مشتریان و تاریخچه حفظ؛ «بازگردانی» در دسترس.</td></tr>
       </tbody>
     </table></div>
     <p class="note"><b>نمونه عددی (سناریو ۵):</b> «صندوق کافه» با ۱۱۰ مشتری از ونک به تجریش می‌رود. <span class="tag t-green">جابه‌جایی</span> ونک ۲۳۸ و تجریش ۹۵ بی‌تغییر می‌مانند و فقط مشتریان جدید به تجریش می‌روند. <span class="tag t-yellow">اصلاح</span> ونک ۲۳۸ ← ۱۵۰ و تجریش ۹۵ ← ۲۰۵؛ ۲۲ نفری که در صندوق قنادی ونک هم ثبت شده‌اند در ونک می‌مانند. این اعداد پیش از ذخیره در برگه ویرایش نمایش داده می‌شوند.</p>
@@ -307,14 +320,14 @@
     <h2><span class="num">۰۷</span>گزارش زمان و هوش مصنوعی</h2>
     <p>این نمونه و این سند با <b>Claude Code</b> (هوش مصنوعی) ساخته شده‌اند؛ مسئله، سیستم طراحی direct.ir، فونت‌ها و معیار کیفیت از سوی من تعیین و خروجی‌ها بازبینی شد.</p>
     <p class="total-time"><span>زمان کل:</span><b>فقط در یک لیمیت Claude Code!</b></p>
-    <div class="tbl-scroll"><table>
+    <div class="tbl-scroll tbl-cards"><table>
       <thead><tr><th>بخش</th><th>نقش هوش مصنوعی</th><th>نحوه بررسی خروجی</th></tr></thead>
       <tbody>
-        <tr><td>تحلیل مسئله، ساختار اطلاعات و منطق برچسب خودکار</td><td>پیشنهاد گزینه‌ها و استدلال</td><td>تطبیق با سناریوهای ۱ تا ۵ و معیارهای تمرین</td></tr>
-        <tr><td>سیستم طراحی (رنگ، تایپوگرافی پینار/یکان‌بخ، اجزا)</td><td>استخراج از تصویر direct.ir و پیاده‌سازی</td><td>مقایسه بصری با سایت</td></tr>
-        <tr><td>کد نمونه (HTML/CSS/JS بدون وابستگی)</td><td>نوشتن کامل کد و داده ساختگی</td><td>اجرای خودکار همه سناریوها با Playwright در عرض‌های ۳۶۰، ۳۹۰، ۴۳۰ و دسکتاپ، بررسی خطاهای کنسول و اسکرول افقی، بازبینی اسکرین‌شات هر صفحه</td></tr>
-        <tr><td>متن‌های رابط و پیام‌های خطا</td><td>پیش‌نویس</td><td>خواندن در بستر هر صفحه؛ رفع ابهام‌هایی مثل جداکننده «·» که کنار ارقام فارسی شبیه «۰» دیده می‌شد</td></tr>
-        <tr><td>این سند</td><td>پیش‌نویس</td><td>کنترل اعداد با خروجی نمونه</td></tr>
+        <tr><td data-label="بخش">تحلیل مسئله، ساختار اطلاعات و منطق برچسب خودکار</td><td data-label="نقش هوش مصنوعی">پیشنهاد گزینه‌ها و استدلال</td><td data-label="نحوه بررسی خروجی">تطبیق با سناریوهای ۱ تا ۵ و معیارهای تمرین</td></tr>
+        <tr><td data-label="بخش">سیستم طراحی (رنگ، تایپوگرافی پینار/یکان‌بخ، اجزا)</td><td data-label="نقش هوش مصنوعی">استخراج از تصویر direct.ir و پیاده‌سازی</td><td data-label="نحوه بررسی خروجی">مقایسه بصری با سایت</td></tr>
+        <tr><td data-label="بخش">کد نمونه (HTML/CSS/JS بدون وابستگی)</td><td data-label="نقش هوش مصنوعی">نوشتن کامل کد و داده ساختگی</td><td data-label="نحوه بررسی خروجی">اجرای خودکار همه سناریوها با Playwright در عرض‌های ۳۶۰، ۳۹۰، ۴۳۰ و دسکتاپ، بررسی خطاهای کنسول و اسکرول افقی، بازبینی اسکرین‌شات هر صفحه</td></tr>
+        <tr><td data-label="بخش">متن‌های رابط و پیام‌های خطا</td><td data-label="نقش هوش مصنوعی">پیش‌نویس</td><td data-label="نحوه بررسی خروجی">خواندن در بستر هر صفحه؛ رفع ابهام‌هایی مثل جداکننده «·» که کنار ارقام فارسی شبیه «۰» دیده می‌شد</td></tr>
+        <tr><td data-label="بخش">این سند</td><td data-label="نقش هوش مصنوعی">پیش‌نویس</td><td data-label="نحوه بررسی خروجی">کنترل اعداد با خروجی نمونه</td></tr>
       </tbody>
     </table></div>
     <h3>کنار گذاشته‌شده برای رعایت زمان</h3>
