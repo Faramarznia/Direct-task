@@ -101,7 +101,9 @@
     .callout b{color:var(--blue-700)}
     .result{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 12px;border-radius:12px;background:#FCFCFD;border:1px solid var(--line);margin-top:8px;font-size:14px}
     .result .arrow{transform:none}
-    .placeholder{background:#FFF3C4;border:1px dashed #E0B400;border-radius:8px;padding:0 6px;font-weight:700;color:#6B5200}
+    .total-time{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:14px 0 4px;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,#1F56D8,#3B7BF6 60%,#6EA0FA);color:#fff;box-shadow:0 10px 22px -12px rgba(37,99,235,.65)}
+    .total-time span{font-size:13px;font-weight:700;opacity:.85}
+    .total-time b{font-family:var(--display);font-weight:800;font-size:20px;line-height:1.5}
     footer{margin-top:32px;color:var(--subtle);font-size:12.5px;text-align:center}
 
     @media print{
@@ -161,7 +163,9 @@
       .jstep,.card,table,.callout,.node,.result,.note{break-inside:avoid}
       #simple{break-inside:avoid}
       h2{break-after:avoid}
-      #validate,#ai,#run{font-size:9pt}
+      #ai,#run{font-size:9pt}
+      .total-time{padding:8px 12px;border-radius:10px;margin:8px 0 2px}
+      .total-time b{font-size:13pt}
       footer{display:none}
     }
   </style>
@@ -187,7 +191,7 @@
     </div>
     <nav class="toc" aria-label="فهرست">
       <a href="#need">نیاز و فرض‌ها</a><a href="#structure">ساختار</a><a href="#journey">مسیر کاربر</a><a href="#simple">سادگی</a>
-      <a href="#audience">مثال انتخاب مخاطب</a><a href="#change">اثر تغییر</a><a href="#validate">روش بررسی</a><a href="#ai">گزارش AI</a><a href="#run">اجرا</a>
+      <a href="#audience">مثال انتخاب مخاطب</a><a href="#change">اثر تغییر</a><a href="#ai">گزارش AI</a><a href="#run">اجرا</a>
     </nav>
   </header>
 
@@ -298,45 +302,20 @@
     <p class="note"><b>محدودیت‌های نمونه:</b> مدیریت مستقل بخش‌ها (تغییر نام/ادغام)، حذف شعبه دارای مشتری و ترکیب برچسب‌ها پیاده نشده‌اند؛ اسکن QR و اتصال دستگاه شبیه‌سازی شده‌اند.</p>
   </section>
 
-  <p class="part">بخش دوم · روش بررسی راه‌حل</p>
-
-  <section id="validate">
-    <h2><span class="num">۰۸</span>روش بررسی</h2>
-    <h3>۱. آیا دسته‌بندی با نیاز واقعی مدیر جور است؟ (قبل از ساخت)</h3>
-    <p>با ۸ تا ۱۰ مدیر (۴ تک‌دستگاه، ۳ چنددستگاه در یک شعبه، ۳ چندشعبه) مصاحبه کوتاه: «۵ پیام آخری که فرستادید برای چه کسانی بود؟» و در داده واقعی پنل: برچسب‌های دستی پرکاربرد چه معیاری دارند؟</p>
-    <p class="callout warn"><b>نشانه بازنگری:</b> اگر بیش از ۳۰٪ نیازهای هدف‌گیری ربطی به محل ثبت نداشته باشد (مثلاً مبلغ خرید یا دفعات مراجعه)، شعبه/بخش معیار اصلی نیست و باید کنار معیار رفتاری طراحی شود.</p>
-    <h3>۲. آیا مدیر جریان‌ها را درست انجام می‌دهد؟ (تست کاربردپذیری روی گوشی خودشان)</h3>
-    <div class="tbl-scroll"><table>
-      <thead><tr><th>وظیفه</th><th>معیار موفقیت</th><th>نشانه بازنگری</th></tr></thead>
-      <tbody>
-        <tr><td>اولین دستگاه را اضافه کنید.</td><td>بدون کمک، کمتر از ۶۰ ثانیه</td><td>مکث بیش از ۱۰ ثانیه روی مرحله مشخصات یا باز کردن «تنظیمات اختیاری» توسط بیش از نیمی از کاربران تک‌دستگاه ← افزودن مستقیم پس از کد</td></tr>
-        <tr><td>دستگاه دوم را طوری اضافه کنید که بعداً از اولی تشخیصش دهید.</td><td>نام معنادار؛ تشخیص درست دو دستگاه در محل</td><td>بیش از ۲۰٪ «کافه» را در نام می‌نویسند ولی بخش تعیین نمی‌کنند ← مفهوم نام و بخش باید ادغام یا بازنام‌گذاری شود</td></tr>
-        <tr><td>(چندشعبه) به شعبه تجریش دستگاه اضافه کنید.</td><td>شعبه درست در اولین تلاش</td><td>انتخاب شعبه اشتباه ← پیش‌فرض بر اساس شعبه درحال‌مشاهده کافی نیست</td></tr>
-        <tr><td>«فقط به مشتریان ونک پیام بدهید؛ کدام گروه؟»</td><td>انتخاب «شعبه ونک» و توضیح درست اعضا</td><td>ابهام درباره مشتری مشترک دو شعبه</td></tr>
-        <tr><td>«دیروز دستگاه کافه را به تجریش بردید؛ پنل را به‌روز کنید.» و سپس: «مشتریان قبلی آن الان کجا هستند؟»</td><td>انتخاب «جابه‌جایی» و پاسخ درست</td><td>کمتر از ۷۰٪ گزینه منطبق با سناریو را انتخاب کنند ← بازنویسی متن یا تغییر پیش‌فرض</td></tr>
-      </tbody>
-    </table></div>
-    <h3>۳. پس از انتشار (داده محصول)</h3>
-    <ul>
-      <li>زمان از شروع افزودن تا اولین «آنلاین»، و نرخ هر نوع خطای کد.</li>
-      <li>سهم پیام‌هایی که با برچسب خودکار ارسال می‌شوند؛ نرخ تعیین بخش در شعبه‌های دارای ۲+ دستگاه (زیر ۲۰٪ یعنی بخش نیاز واقعی نیست یا پیدا نمی‌شود).</li>
-      <li>نرخ استفاده از «بازگردانی» پس از تغییر شعبه/بخش (بالا بودن آن یعنی پرسش «جابه‌جایی یا اصلاح» گیج‌کننده است).</li>
-    </ul>
-  </section>
-
-  <p class="part">بخش سوم · گزارش زمان و استفاده از هوش مصنوعی</p>
+  <p class="part">بخش دوم · گزارش زمان و استفاده از هوش مصنوعی</p>
 
   <section id="ai">
-    <h2><span class="num">۰۹</span>گزارش زمان و هوش مصنوعی</h2>
+    <h2><span class="num">۰۷</span>گزارش زمان و هوش مصنوعی</h2>
     <p>این نمونه و این سند با <b>Claude Code</b> (هوش مصنوعی) ساخته شده‌اند؛ مسئله، سیستم طراحی direct.ir، فونت‌ها و معیار کیفیت از سوی من تعیین و خروجی‌ها بازبینی شد.</p>
+    <div class="total-time"><span>زمان کل</span><b>فقط در یک لیمیت Claude Code!</b></div>
     <div class="tbl-scroll"><table>
-      <thead><tr><th>بخش</th><th>نقش هوش مصنوعی</th><th>نحوه بررسی خروجی</th><th>زمان واقعی</th></tr></thead>
+      <thead><tr><th>بخش</th><th>نقش هوش مصنوعی</th><th>نحوه بررسی خروجی</th></tr></thead>
       <tbody>
-        <tr><td>تحلیل مسئله، ساختار اطلاعات و منطق برچسب خودکار</td><td>پیشنهاد گزینه‌ها و استدلال</td><td>تطبیق با سناریوهای ۱ تا ۵ و معیارهای تمرین</td><td><span class="placeholder">؟ دقیقه</span></td></tr>
-        <tr><td>سیستم طراحی (رنگ، تایپوگرافی پینار/یکان‌بخ، اجزا)</td><td>استخراج از تصویر direct.ir و پیاده‌سازی</td><td>مقایسه بصری با سایت</td><td><span class="placeholder">؟ دقیقه</span></td></tr>
-        <tr><td>کد نمونه (HTML/CSS/JS بدون وابستگی)</td><td>نوشتن کامل کد و داده ساختگی</td><td>اجرای خودکار همه سناریوها با Playwright در عرض‌های ۳۶۰، ۳۹۰، ۴۳۰ و دسکتاپ، بررسی خطاهای کنسول و اسکرول افقی، بازبینی اسکرین‌شات هر صفحه</td><td><span class="placeholder">؟ دقیقه</span></td></tr>
-        <tr><td>متن‌های رابط و پیام‌های خطا</td><td>پیش‌نویس</td><td>خواندن در بستر هر صفحه؛ رفع ابهام‌هایی مثل جداکننده «·» که کنار ارقام فارسی شبیه «۰» دیده می‌شد</td><td><span class="placeholder">؟ دقیقه</span></td></tr>
-        <tr><td>این سند</td><td>پیش‌نویس</td><td>کنترل اعداد با خروجی نمونه</td><td><span class="placeholder">؟ دقیقه</span></td></tr>
+        <tr><td>تحلیل مسئله، ساختار اطلاعات و منطق برچسب خودکار</td><td>پیشنهاد گزینه‌ها و استدلال</td><td>تطبیق با سناریوهای ۱ تا ۵ و معیارهای تمرین</td></tr>
+        <tr><td>سیستم طراحی (رنگ، تایپوگرافی پینار/یکان‌بخ، اجزا)</td><td>استخراج از تصویر direct.ir و پیاده‌سازی</td><td>مقایسه بصری با سایت</td></tr>
+        <tr><td>کد نمونه (HTML/CSS/JS بدون وابستگی)</td><td>نوشتن کامل کد و داده ساختگی</td><td>اجرای خودکار همه سناریوها با Playwright در عرض‌های ۳۶۰، ۳۹۰، ۴۳۰ و دسکتاپ، بررسی خطاهای کنسول و اسکرول افقی، بازبینی اسکرین‌شات هر صفحه</td></tr>
+        <tr><td>متن‌های رابط و پیام‌های خطا</td><td>پیش‌نویس</td><td>خواندن در بستر هر صفحه؛ رفع ابهام‌هایی مثل جداکننده «·» که کنار ارقام فارسی شبیه «۰» دیده می‌شد</td></tr>
+        <tr><td>این سند</td><td>پیش‌نویس</td><td>کنترل اعداد با خروجی نمونه</td></tr>
       </tbody>
     </table></div>
     <h3>کنار گذاشته‌شده برای رعایت زمان</h3>
@@ -348,7 +327,7 @@
   </section>
 
   <section id="run">
-    <h2><span class="num">۱۰</span>راهنمای اجرا</h2>
+    <h2><span class="num">۰۸</span>راهنمای اجرا</h2>
     <ol>
       <li>نسخه آنلاین: <a href="https://faramarznia.github.io/Direct-task/">faramarznia.github.io/Direct-task</a> — روی گوشی هم باز می‌شود.</li>
       <li>اجرای محلی: فایل <code>index.html</code> را در مرورگر باز کنید (بدون نصب و اینترنت کار می‌کند)؛ یا پوشه را با یک سرور ساده مثل <code>npx serve .</code> اجرا کنید.</li>

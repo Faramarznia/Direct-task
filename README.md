@@ -3,7 +3,7 @@
 نمونه تعاملی موبایل برای پنل باشگاه مشتریان دایرکت: افزودن دستگاه ثبت شماره مشتری، مدیریت دستگاه‌ها در یک یا چند شعبه، و ساختاری که انتخاب گروه مخاطب را هنگام ارسال پیام ممکن می‌کند.
 
 - **نمونه آنلاین:** https://faramarznia.github.io/Direct-task/
-- **مستند تصمیم‌های طراحی، روش بررسی و گزارش AI:** https://faramarznia.github.io/Direct-task/docs.html
+- **مستند تصمیم‌های طراحی و گزارش AI:** https://faramarznia.github.io/Direct-task/docs.html
 - فایل‌ها: `index.html` (نمونه تعاملی) و `docs.html` (مستند)
 
 ## اجرا
@@ -64,7 +64,7 @@ git push origin HEAD:gh-pages
 
 ```
 index.html            پوسته اپ و پنل راهنما
-docs.html             تصمیم‌های طراحی، مسیر کاربر، مثال داده‌ای، روش بررسی، گزارش AI
+docs.html             تصمیم‌های طراحی، مسیر کاربر، مثال داده‌ای، گزارش AI
 assets/css/fonts.css  پینار (نمایشی) و یکان‌بخ (عنوان و متن)
 assets/css/app.css    توکن‌ها و اجزای سیستم طراحی (برگرفته از direct.ir)
 assets/js/icons.js    آیکون‌ها و تصویرسازی‌های SVG
